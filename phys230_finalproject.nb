@@ -1,0 +1,304 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11893,        296]
+NotebookOptionsPosition[      7855,        225]
+NotebookOutlinePosition[      8367,        243]
+CellTagsIndexPosition[      8324,        240]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["The Orbitals of a Hydrogen Atom", "Title",
+ CellChangeTimes->{{3.9839791595819836`*^9, 
+  3.983979187808103*^9}},ExpressionUUID->"b25c9ae0-f74d-4aaa-a096-\
+182b3a7329fc"],
+
+Cell["Plots, Wavefunctions, and Probability Clouds", "Subtitle",
+ CellChangeTimes->{{3.9839792474985094`*^9, 3.983979273390697*^9}, {
+  3.9839793042574706`*^9, 
+  3.9839793219965696`*^9}},ExpressionUUID->"9cb7b36e-cfd6-418d-a4c2-\
+394b7b203923"],
+
+Cell["Physics 230: Final Presentation", "Subsubtitle",
+ CellChangeTimes->{{3.983979327064762*^9, 
+  3.983979338290199*^9}},ExpressionUUID->"bc6ba4fd-5824-4098-9333-\
+c2e3bddf4305"],
+
+Cell["Aaron Jenkins and Daniel Manning", "Author",
+ CellChangeTimes->{{3.9839791956370363`*^9, 
+  3.9839792051601524`*^9}},ExpressionUUID->"52883654-10b4-4259-a12f-\
+baae06c8d39e"],
+
+Cell["Brigham Young University", "Department",
+ CellChangeTimes->{{3.98397920946165*^9, 
+  3.98397921392056*^9}},ExpressionUUID->"d4d4c7eb-5dec-4d53-add6-\
+0c62b30790be"],
+
+Cell["4/18/26", "Date",
+ CellChangeTimes->{{3.9839792222111974`*^9, 
+  3.9839792326555915`*^9}},ExpressionUUID->"72659a8c-94ab-4a48-a7c3-\
+46939f795b09"],
+
+Cell[CellGroupData[{
+
+Cell["The First Orbital", "Section",
+ CellChangeTimes->{{3.983980152192795*^9, 
+  3.9839801591409354`*^9}},ExpressionUUID->"556dd93a-da25-41e9-b72a-\
+5bff22c034c5"],
+
+Cell[TextData[{
+ "Hydrogen atoms are the simplest element on the periodic table, as well as \
+the most plentiful element in the observable universe. Yet despite their \
+ubiquity, a completed understanding of hydrogen atoms proved elusive to \
+scientists. In this notebook, we plan to model the electron orbitals of \
+hydrogen atoms and explore\n\nWe start with the Bohr model and with the \
+spherical harmonics to show what energy levels are. We can draw a Bohr model \
+manually using Graphics objects and using the Bohr radius for the different \
+energy levels, showing what ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ " means. We can introduce the idea of positional uncertainty with \
+Sin[Sqrt[x^2+y^2]]/Sqrt[x^2+y^2]\nHeisenberg uncertainty using sums of sine \
+waves, explaining the fundamental conflict with frequency and position.",
+ "\n1D, 2D, and 3D Particle in a Box--2D particle in a box: DensityPlot of \
+two different sinusoidal plots, (Sin[m Pi*x]*Sin[n Pi*y])^2.\n\nGeneral idea: \
+explain aspects of wavefunctions, until eventually using HydrogenWavefunction."
+}], "Text",
+ CellChangeTimes->{{3.9839801899921885`*^9, 3.9839802651800127`*^9}, {
+  3.9839803283714275`*^9, 3.983980344768021*^9}, {3.98398039452159*^9, 
+  3.983980462434703*^9}, {3.983980565235056*^9, 3.9839806244789267`*^9}, {
+  3.9839808008296113`*^9, 3.983980826564846*^9}, {3.9839809655965147`*^9, 
+  3.983981081835898*^9}, {3.9839811223098125`*^9, 3.98398113237395*^9}, {
+  3.9839812971957073`*^9, 3.9839813418417263`*^9}, {3.983981410140482*^9, 
+  3.983981415953307*^9}, {3.9839815150332623`*^9, 3.983981551358763*^9}, {
+  3.983981603732794*^9, 
+  3.9839816242002363`*^9}},ExpressionUUID->"e3cb5d34-e41b-43e8-adee-\
+abf007e176aa"],
+
+Cell[CellGroupData[{
+
+Cell["Enter subsection title here", "Subsection",ExpressionUUID->"60a1c7b2-9a81-4b81-b2aa-3b90d1c7fb13"],
+
+Cell[CellGroupData[{
+
+Cell["Enter subsubsection title here", "Subsubsection",ExpressionUUID->"5420134d-7e53-473e-ab72-e33d59e34526"],
+
+Cell["\<\
+Enter text here. Enter TraditionalForm input for evaluation in a separate \
+cell below:\
+\>", "Text",ExpressionUUID->"92c50b62-5220-4201-b629-912644273f15"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Integral]", 
+   RowBox[{"x", 
+    RowBox[{"\[DifferentialD]", "x"}]}]}], "+", 
+  SqrtBox["z"]}]], "Input",ExpressionUUID->"a6d50bc2-326a-431c-806b-\
+6466135eeb28"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   SuperscriptBox["x", "2"], "2"], "+", 
+  SqrtBox["z"]}]], "Output",ExpressionUUID->"1b012441-f9db-429e-926e-\
+4c060f5732a5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Enter bulleted item text here.", "Item",ExpressionUUID->"5989b392-7bbe-4ff9-8108-8740ea559575"],
+
+Cell["Enter item paragraph text here.", "ItemParagraph",ExpressionUUID->"9fea9b77-1cab-4ac4-b60d-f4a91405c1ba"],
+
+Cell[CellGroupData[{
+
+Cell["Enter subitem text here.", "Subitem",ExpressionUUID->"27aeed7d-ea92-4550-94b6-8d8b9fe8d75d"],
+
+Cell["Enter item paragraph text here.", "SubitemParagraph",ExpressionUUID->"868b9cc1-5fa0-48a0-9db7-c216ee80bde6"],
+
+Cell[CellGroupData[{
+
+Cell["Enter subitem text here.", "Subsubitem",ExpressionUUID->"f92e0b66-c904-4ab2-96bb-f919b9c5ba2c"],
+
+Cell["Enter item paragraph text here.", "SubsubitemParagraph",ExpressionUUID->"a6536ab7-d091-4123-a62d-d4a578cbe8cd"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+Enter text here. Enter formula for display in a separate cell below:\
+\>", "Text",ExpressionUUID->"e28f41fe-c8b2-43fa-89f1-bda7ad702027"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Integral]", 
+    RowBox[{"x", 
+     RowBox[{"\[DifferentialD]", "x"}]}]}], "+", 
+   SqrtBox["z"]}], TraditionalForm]], "DisplayFormula",ExpressionUUID->\
+"f6f982e5-9ac9-4951-932a-19824a20d9c0"],
+
+Cell[TextData[{
+ "Enter text here. Enter an inline formula like this: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "+", "2"}], TraditionalForm]],ExpressionUUID->
+  "84942bbf-6f60-47e1-be58-31b27eb2ece1"],
+ "."
+}], "Text",ExpressionUUID->"ce497758-767d-4d9a-adb9-d91841b63ba3"],
+
+Cell[CellGroupData[{
+
+Cell["Enter numbered item text here.", "ItemNumbered",ExpressionUUID->"fa15e72b-3e9f-495b-8052-3ea1240d5748"],
+
+Cell["Enter item paragraph text here.", "ItemParagraph",ExpressionUUID->"5e54f3e1-60d4-4df6-9577-8382f7e6c76d"],
+
+Cell[CellGroupData[{
+
+Cell["Enter numbered subitem text here.", "SubitemNumbered",ExpressionUUID->"30c16e94-fafe-4c6d-a63d-9282b9cde142"],
+
+Cell["Enter item paragraph text here.", "SubitemParagraph",ExpressionUUID->"47df05e0-90a3-4b00-b520-70fed5f13ea1"],
+
+Cell[CellGroupData[{
+
+Cell["Enter subitem text here.", "SubsubitemNumbered",ExpressionUUID->"d9e23499-e259-487e-b755-a79c38319b1a"],
+
+Cell["Enter item paragraph text here.", "SubsubitemParagraph",ExpressionUUID->"14a94ab9-6d2f-4da5-9a79-8e6a2f09a0ff"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+Enter text here. Enter formula for numbered display in a separate cell below:\
+\>", "Text",ExpressionUUID->"cc90a53c-2300-4f27-a4cc-b7fcdc1702a3"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[Integral]", 
+    RowBox[{"x", 
+     RowBox[{"\[DifferentialD]", "x"}]}]}], "+", 
+   SqrtBox["z"]}], TraditionalForm]], "DisplayFormulaNumbered",ExpressionUUID->\
+"aba547ac-aad4-4c14-8731-087366d054ab"],
+
+Cell["Enter text here. Enter Wolfram Language program code below.", "Text",ExpressionUUID->"a64aa0f9-c2f2-4faf-87b0-49d6dfff062b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fun", "[", "x_", "]"}], ":=", "1"}]], "Code",ExpressionUUID->\
+"15be61a2-dacb-4d9a-aa49-7ec215c35bfa"],
+
+Cell["\<\
+Enter text here. Enter non-Wolfram Language program code below.\
+\>", "Text",ExpressionUUID->"bb639a1e-e5da-4860-8d2e-10a0bf1182ad"],
+
+Cell["\<\
+DLLEXPORT int fun(WolframLibraryData libData, mreal A1, mreal *Res)
+{
+ mreal R0_0;
+ mreal R0_1;
+ R0_0 = A1;
+ R0_1 = R0_0 * R0_0;
+ *Res = R0_1;
+ funStructCompile->WolframLibraryData_cleanUp(libData, 1);
+ return 0;
+}\
+\>", "Program",ExpressionUUID->"c5b1489e-bc85-498f-a988-84cb9d29ea12"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1152., 579.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (November 18, 2022)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"dbd5a3af-a175-4dad-a351-d06511c68d26"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 176, 3, 96, "Title",ExpressionUUID->"b25c9ae0-f74d-4aaa-a096-182b3a7329fc"],
+Cell[759, 27, 245, 4, 33, "Subtitle",ExpressionUUID->"9cb7b36e-cfd6-418d-a4c2-394b7b203923"],
+Cell[1007, 33, 180, 3, 31, "Subsubtitle",ExpressionUUID->"bc6ba4fd-5824-4098-9333-c2e3bddf4305"],
+Cell[1190, 38, 180, 3, 41, "Author",ExpressionUUID->"52883654-10b4-4259-a12f-baae06c8d39e"],
+Cell[1373, 43, 170, 3, 17, "Department",ExpressionUUID->"d4d4c7eb-5dec-4d53-add6-0c62b30790be"],
+Cell[1546, 48, 153, 3, 43, "Date",ExpressionUUID->"72659a8c-94ab-4a48-a7c3-46939f795b09"],
+Cell[CellGroupData[{
+Cell[1724, 55, 164, 3, 69, "Section",ExpressionUUID->"556dd93a-da25-41e9-b72a-5bff22c034c5"],
+Cell[1891, 60, 1714, 27, 218, "Text",ExpressionUUID->"e3cb5d34-e41b-43e8-adee-abf007e176aa"],
+Cell[CellGroupData[{
+Cell[3630, 91, 104, 0, 34, "Subsection",ExpressionUUID->"60a1c7b2-9a81-4b81-b2aa-3b90d1c7fb13"],
+Cell[CellGroupData[{
+Cell[3759, 95, 110, 0, 33, "Subsubsection",ExpressionUUID->"5420134d-7e53-473e-ab72-e33d59e34526"],
+Cell[3872, 97, 166, 3, 34, "Text",ExpressionUUID->"92c50b62-5220-4201-b629-912644273f15"],
+Cell[CellGroupData[{
+Cell[4063, 104, 200, 6, 54, "Input",ExpressionUUID->"a6d50bc2-326a-431c-806b-6466135eeb28"],
+Cell[4266, 112, 165, 5, 57, "Output",ExpressionUUID->"1b012441-f9db-429e-926e-4c060f5732a5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4468, 122, 101, 0, 28, "Item",ExpressionUUID->"5989b392-7bbe-4ff9-8108-8740ea559575"],
+Cell[4572, 124, 111, 0, 25, "ItemParagraph",ExpressionUUID->"9fea9b77-1cab-4ac4-b60d-f4a91405c1ba"],
+Cell[CellGroupData[{
+Cell[4708, 128, 98, 0, 26, "Subitem",ExpressionUUID->"27aeed7d-ea92-4550-94b6-8d8b9fe8d75d"],
+Cell[4809, 130, 114, 0, 23, "SubitemParagraph",ExpressionUUID->"868b9cc1-5fa0-48a0-9db7-c216ee80bde6"],
+Cell[CellGroupData[{
+Cell[4948, 134, 101, 0, 25, "Subsubitem",ExpressionUUID->"f92e0b66-c904-4ab2-96bb-f919b9c5ba2c"],
+Cell[5052, 136, 117, 0, 22, "SubsubitemParagraph",ExpressionUUID->"a6536ab7-d091-4123-a62d-d4a578cbe8cd"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[5208, 141, 147, 2, 34, "Text",ExpressionUUID->"e28f41fe-c8b2-43fa-89f1-bda7ad702027"],
+Cell[5358, 145, 242, 7, 39, "DisplayFormula",ExpressionUUID->"f6f982e5-9ac9-4951-932a-19824a20d9c0"],
+Cell[5603, 154, 276, 7, 34, "Text",ExpressionUUID->"ce497758-767d-4d9a-adb9-d91841b63ba3"],
+Cell[CellGroupData[{
+Cell[5904, 165, 109, 0, 28, "ItemNumbered",ExpressionUUID->"fa15e72b-3e9f-495b-8052-3ea1240d5748"],
+Cell[6016, 167, 111, 0, 70, "ItemParagraph",ExpressionUUID->"5e54f3e1-60d4-4df6-9577-8382f7e6c76d"],
+Cell[CellGroupData[{
+Cell[6152, 171, 115, 0, 70, "SubitemNumbered",ExpressionUUID->"30c16e94-fafe-4c6d-a63d-9282b9cde142"],
+Cell[6270, 173, 114, 0, 70, "SubitemParagraph",ExpressionUUID->"47df05e0-90a3-4b00-b520-70fed5f13ea1"],
+Cell[CellGroupData[{
+Cell[6409, 177, 109, 0, 70, "SubsubitemNumbered",ExpressionUUID->"d9e23499-e259-487e-b755-a79c38319b1a"],
+Cell[6521, 179, 117, 0, 70, "SubsubitemParagraph",ExpressionUUID->"14a94ab9-6d2f-4da5-9a79-8e6a2f09a0ff"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[6677, 184, 156, 2, 70, "Text",ExpressionUUID->"cc90a53c-2300-4f27-a4cc-b7fcdc1702a3"],
+Cell[6836, 188, 250, 7, 70, "DisplayFormulaNumbered",ExpressionUUID->"aba547ac-aad4-4c14-8731-087366d054ab"],
+Cell[7089, 197, 130, 0, 70, "Text",ExpressionUUID->"a64aa0f9-c2f2-4faf-87b0-49d6dfff062b"],
+Cell[7222, 199, 137, 3, 70, "Code",ExpressionUUID->"15be61a2-dacb-4d9a-aa49-7ec215c35bfa"],
+Cell[7362, 204, 142, 2, 70, "Text",ExpressionUUID->"bb639a1e-e5da-4860-8d2e-10a0bf1182ad"],
+Cell[7507, 208, 296, 11, 70, "Program",ExpressionUUID->"c5b1489e-bc85-498f-a988-84cb9d29ea12"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
