@@ -10,19 +10,20 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16039,        364]
-NotebookOptionsPosition[     13671,        318]
-NotebookOutlinePosition[     14183,        336]
-CellTagsIndexPosition[     14140,        333]
+NotebookDataLength[     16100,        364]
+NotebookOptionsPosition[     13774,        319]
+NotebookOutlinePosition[     14244,        336]
+CellTagsIndexPosition[     14201,        333]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["The Orbitals of a Hydrogen Atom", "Title",
- CellChangeTimes->{{3.9839791595819836`*^9, 
-  3.983979187808103*^9}},ExpressionUUID->"b25c9ae0-f74d-4aaa-a096-\
+Cell["Quantum Mechanics and Hydrogen Atoms", "Title",
+ CellChangeTimes->{{3.9839791595819836`*^9, 3.983979187808103*^9}, {
+  3.985442368194748*^9, 
+  3.985442376439268*^9}},ExpressionUUID->"b25c9ae0-f74d-4aaa-a096-\
 182b3a7329fc"],
 
 Cell["Plots, Wavefunctions, and Probability Clouds", "Subtitle",
@@ -46,9 +47,10 @@ Cell["Brigham Young University", "Department",
   3.98397921392056*^9}},ExpressionUUID->"d4d4c7eb-5dec-4d53-add6-\
 0c62b30790be"],
 
-Cell["4/18/26", "Date",
- CellChangeTimes->{{3.9839792222111974`*^9, 
-  3.9839792326555915`*^9}},ExpressionUUID->"72659a8c-94ab-4a48-a7c3-\
+Cell["4/18/2026", "Date",
+ CellChangeTimes->{{3.9839792222111974`*^9, 3.9839792326555915`*^9}, {
+  3.9854425274977913`*^9, 
+  3.985442527618889*^9}},ExpressionUUID->"72659a8c-94ab-4a48-a7c3-\
 46939f795b09"],
 
 Cell[CellGroupData[{
@@ -186,9 +188,9 @@ Cell[BoxData[
       " ", "levels"}], ",", " ", 
     RowBox[{"n1", " ", "and", " ", 
      RowBox[{"n2", ".", " ", "A"}], " ", "positive", " ", "value", " ", 
-     "indicates", " ", "that", " ", "the", " ", "electron", " ", "dropped", 
-     " ", "in", " ", "energy", " ", "from", " ", "a", " ", "high", " ", 
-     "level", " ", "to", " ", "a", " ", "lower", " ", "level"}], ",", " ", 
+     "indicates", " ", "that", " ", "the", " ", "electron", " ", "dropped", " ",
+      "in", " ", "energy", " ", "from", " ", "a", " ", "high", " ", "level", " ",
+      "to", " ", "a", " ", "lower", " ", "level"}], ",", " ", 
     RowBox[{
     "while", " ", "a", " ", "negative", " ", "value", " ", "indicates", " ", 
      "that", " ", "the", " ", "electron", " ", "absorbed", " ", "energy", " ",
@@ -254,11 +256,11 @@ Cell[BoxData[
   RowBox[{"(*", 
    RowBox[{
     RowBox[{
-    "Given", " ", "the", " ", "energy", " ", "of", " ", "a", " ", "photon", 
-     " ", "in", " ", "eV"}], ",", " ", 
+    "Given", " ", "the", " ", "energy", " ", "of", " ", "a", " ", "photon", " ",
+      "in", " ", "eV"}], ",", " ", 
     RowBox[{
-    "this", " ", "function", " ", "returns", " ", "the", " ", "wavelength", 
-     " ", "of", " ", "that", " ", "photon", " ", "in", " ", "nm"}]}], "*)"}], 
+    "this", " ", "function", " ", "returns", " ", "the", " ", "wavelength", " ",
+      "of", " ", "that", " ", "photon", " ", "in", " ", "nm"}]}], "*)"}], 
   "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
@@ -274,8 +276,7 @@ Cell[BoxData[
           RowBox[{"-", "15"}]}], "*", "3", "*", 
          RowBox[{
           RowBox[{"10", "^", "8"}], "/", "en"}], "*", 
-         RowBox[{"10", "^", "9"}]}], "]"}]}]}], "]"}]}], 
-   "\[IndentingNewLine]", 
+         RowBox[{"10", "^", "9"}]}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
    RowBox[{"PhotonWavelength", "[", 
     RowBox[{"HydrogenBohrEnergy", "[", 
      RowBox[{"2", ",", "3"}], "]"}], "]"}], "\[IndentingNewLine]", 
@@ -316,10 +317,9 @@ e8f9d935205b"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1152., 579.6},
-WindowMargins->{{
-  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
-FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (November 18, 2022)",
+WindowSize->{613.8, 573.6},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
 StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
   CharacterEncoding -> "UTF-8"],
 ExpressionUUID->"dbd5a3af-a175-4dad-a351-d06511c68d26"
@@ -336,33 +336,33 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 176, 3, 96, "Title",ExpressionUUID->"b25c9ae0-f74d-4aaa-a096-182b3a7329fc"],
-Cell[759, 27, 245, 4, 33, "Subtitle",ExpressionUUID->"9cb7b36e-cfd6-418d-a4c2-394b7b203923"],
-Cell[1007, 33, 180, 3, 31, "Subsubtitle",ExpressionUUID->"bc6ba4fd-5824-4098-9333-c2e3bddf4305"],
-Cell[1190, 38, 180, 3, 41, "Author",ExpressionUUID->"52883654-10b4-4259-a12f-baae06c8d39e"],
-Cell[1373, 43, 170, 3, 17, "Department",ExpressionUUID->"d4d4c7eb-5dec-4d53-add6-0c62b30790be"],
-Cell[1546, 48, 153, 3, 43, "Date",ExpressionUUID->"72659a8c-94ab-4a48-a7c3-46939f795b09"],
+Cell[580, 22, 230, 4, 155, "Title",ExpressionUUID->"b25c9ae0-f74d-4aaa-a096-182b3a7329fc"],
+Cell[813, 28, 245, 4, 32, "Subtitle",ExpressionUUID->"9cb7b36e-cfd6-418d-a4c2-394b7b203923"],
+Cell[1061, 34, 180, 3, 30, "Subsubtitle",ExpressionUUID->"bc6ba4fd-5824-4098-9333-c2e3bddf4305"],
+Cell[1244, 39, 180, 3, 40, "Author",ExpressionUUID->"52883654-10b4-4259-a12f-baae06c8d39e"],
+Cell[1427, 44, 170, 3, 16, "Department",ExpressionUUID->"d4d4c7eb-5dec-4d53-add6-0c62b30790be"],
+Cell[1600, 49, 206, 4, 42, "Date",ExpressionUUID->"72659a8c-94ab-4a48-a7c3-46939f795b09"],
 Cell[CellGroupData[{
-Cell[1724, 55, 164, 3, 69, "Section",ExpressionUUID->"556dd93a-da25-41e9-b72a-5bff22c034c5"],
-Cell[1891, 60, 1830, 28, 241, "Text",ExpressionUUID->"e3cb5d34-e41b-43e8-adee-abf007e176aa"],
+Cell[1831, 57, 164, 3, 68, "Section",ExpressionUUID->"556dd93a-da25-41e9-b72a-5bff22c034c5"],
+Cell[1998, 62, 1830, 28, 404, "Text",ExpressionUUID->"e3cb5d34-e41b-43e8-adee-abf007e176aa"],
 Cell[CellGroupData[{
-Cell[3746, 92, 166, 3, 34, "Subsection",ExpressionUUID->"60a1c7b2-9a81-4b81-b2aa-3b90d1c7fb13"],
-Cell[3915, 97, 1414, 21, 172, "Text",ExpressionUUID->"92c50b62-5220-4201-b629-912644273f15"],
+Cell[3853, 94, 166, 3, 53, "Subsection",ExpressionUUID->"60a1c7b2-9a81-4b81-b2aa-3b90d1c7fb13"],
+Cell[4022, 99, 1414, 21, 295, "Text",ExpressionUUID->"92c50b62-5220-4201-b629-912644273f15"],
 Cell[CellGroupData[{
-Cell[5354, 122, 1027, 26, 39, "Input",ExpressionUUID->"e9ad1f6e-d3c7-4bb2-86e8-2b1cb1c80d93"],
-Cell[6384, 150, 497, 8, 383, "Output",ExpressionUUID->"efcdb650-0606-442e-9011-a111efa5c082"]
+Cell[5461, 124, 1027, 26, 58, "Input",ExpressionUUID->"e9ad1f6e-d3c7-4bb2-86e8-2b1cb1c80d93"],
+Cell[6491, 152, 497, 8, 383, "Output",ExpressionUUID->"efcdb650-0606-442e-9011-a111efa5c082"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6918, 163, 2594, 58, 192, "Input",ExpressionUUID->"a6d50bc2-326a-431c-806b-6466135eeb28"],
-Cell[9515, 223, 226, 4, 39, "Output",ExpressionUUID->"b8c6fc3e-9952-4ca1-9a2d-cb92661bc058"]
+Cell[7025, 165, 2594, 58, 191, "Input",ExpressionUUID->"a6d50bc2-326a-431c-806b-6466135eeb28"],
+Cell[9622, 225, 226, 4, 39, "Output",ExpressionUUID->"b8c6fc3e-9952-4ca1-9a2d-cb92661bc058"]
 }, Open  ]],
-Cell[9756, 230, 1124, 17, 103, "Text",ExpressionUUID->"ec253c67-5d12-4082-884a-20f7c9e2a4e1"],
+Cell[9863, 232, 1124, 17, 98, "Text",ExpressionUUID->"ec253c67-5d12-4082-884a-20f7c9e2a4e1"],
 Cell[CellGroupData[{
-Cell[10905, 251, 1463, 36, 135, "Input",ExpressionUUID->"e1313501-49ba-426b-81b5-7c834352858a"],
-Cell[12371, 289, 296, 4, 39, "Output",ExpressionUUID->"47e22150-13e8-4662-97cc-85352721d14f"],
-Cell[12670, 295, 297, 4, 39, "Output",ExpressionUUID->"f20a59ec-23cd-40ed-9963-3ff3a1e6aa52"]
+Cell[11012, 253, 1459, 35, 134, "Input",ExpressionUUID->"e1313501-49ba-426b-81b5-7c834352858a"],
+Cell[12474, 290, 296, 4, 39, "Output",ExpressionUUID->"47e22150-13e8-4662-97cc-85352721d14f"],
+Cell[12773, 296, 297, 4, 39, "Output",ExpressionUUID->"f20a59ec-23cd-40ed-9963-3ff3a1e6aa52"]
 }, Open  ]],
-Cell[12982, 302, 649, 11, 80, "Text",ExpressionUUID->"885571b4-1965-42f0-a737-e8f9d935205b"]
+Cell[13085, 303, 649, 11, 76, "Text",ExpressionUUID->"885571b4-1965-42f0-a737-e8f9d935205b"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
