@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11893,        296]
-NotebookOptionsPosition[      7855,        225]
-NotebookOutlinePosition[      8367,        243]
-CellTagsIndexPosition[      8324,        240]
+NotebookDataLength[     16039,        364]
+NotebookOptionsPosition[     13671,        318]
+NotebookOutlinePosition[     14183,        336]
+CellTagsIndexPosition[     14140,        333]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -63,7 +63,8 @@ Cell[TextData[{
 the most plentiful element in the observable universe. Yet despite their \
 ubiquity, a completed understanding of hydrogen atoms proved elusive to \
 scientists. In this notebook, we plan to model the electron orbitals of \
-hydrogen atoms and explore\n\nWe start with the Bohr model and with the \
+hydrogen atoms and build up the functions that the Resource Function \
+HydrogenWavefunction uses.\n\nWe start with the Bohr model and with the \
 spherical harmonics to show what energy levels are. We can draw a Bohr model \
 manually using Graphics objects and using the Bohr radius for the different \
 energy levels, showing what ",
@@ -71,9 +72,9 @@ energy levels, showing what ",
   FontSlant->"Italic"],
  " means. We can introduce the idea of positional uncertainty with \
 Sin[Sqrt[x^2+y^2]]/Sqrt[x^2+y^2]\nHeisenberg uncertainty using sums of sine \
-waves, explaining the fundamental conflict with frequency and position.",
- "\n1D, 2D, and 3D Particle in a Box--2D particle in a box: DensityPlot of \
-two different sinusoidal plots, (Sin[m Pi*x]*Sin[n Pi*y])^2.\n\nGeneral idea: \
+waves, explaining the fundamental conflict with frequency and position.\n1D, \
+2D, and 3D Particle in a Box--2D particle in a box: DensityPlot of two \
+different sinusoidal plots, (Sin[m Pi*x]*Sin[n Pi*y])^2.\n\nGeneral idea: \
 explain aspects of wavefunctions, until eventually using HydrogenWavefunction."
 }], "Text",
  CellChangeTimes->{{3.9839801899921885`*^9, 3.9839802651800127`*^9}, {
@@ -83,142 +84,234 @@ explain aspects of wavefunctions, until eventually using HydrogenWavefunction."
   3.983981081835898*^9}, {3.9839811223098125`*^9, 3.98398113237395*^9}, {
   3.9839812971957073`*^9, 3.9839813418417263`*^9}, {3.983981410140482*^9, 
   3.983981415953307*^9}, {3.9839815150332623`*^9, 3.983981551358763*^9}, {
-  3.983981603732794*^9, 
-  3.9839816242002363`*^9}},ExpressionUUID->"e3cb5d34-e41b-43e8-adee-\
+  3.983981603732794*^9, 3.9839816242002363`*^9}, {3.985379716908289*^9, 
+  3.9853797597305975`*^9}},ExpressionUUID->"e3cb5d34-e41b-43e8-adee-\
 abf007e176aa"],
 
 Cell[CellGroupData[{
 
-Cell["Enter subsection title here", "Subsection",ExpressionUUID->"60a1c7b2-9a81-4b81-b2aa-3b90d1c7fb13"],
+Cell["The Bohr Model", "Subsection",
+ CellChangeTimes->{{3.9853798808863277`*^9, 
+  3.9853798867401943`*^9}},ExpressionUUID->"60a1c7b2-9a81-4b81-b2aa-\
+3b90d1c7fb13"],
+
+Cell["\<\
+Niels Bohr developed a model of the atom that built off Rutherford\
+\[CloseCurlyQuote]s discovery of the atomic nucleus. While somewhat primitive \
+by today\[CloseCurlyQuote]s standards and inaccurate in many ways, it was by \
+far the best atomic model that had been suggested. His big breakthrough was \
+the idea of quantized electron energy levels, or shells. He pictured \
+electrons as orbiting the nucleus, like planets around a star, and much like \
+planets, these electrons would have a fixed radius for a given energy level. \
+These energy levels have a fixed energy differential between them, and for an \
+electron to jump from one energy level to a higher one, it needs to absorb \
+light of precisely the corresponding amount of energy. When the electrons \
+drops back down to the initial energy level, it would emit a photon with that \
+same amount of energy. The following graphic shows the first three electron \
+shells at the predicted radii, shown in blue, orbiting the nucleus, shown in \
+red. Note that the size of the nucleus is not to scale.\
+\>", "Text",
+ CellChangeTimes->{{3.9853799116235275`*^9, 3.9853801477061863`*^9}, {
+  3.9853802830031543`*^9, 3.985380322688833*^9}, {3.985380353017729*^9, 
+  3.9853804284367037`*^9}, {3.9853832285698414`*^9, 3.9853832581525817`*^9}, {
+  3.985383296897958*^9, 
+  3.985383371547036*^9}},ExpressionUUID->"92c50b62-5220-4201-b629-\
+912644273f15"],
 
 Cell[CellGroupData[{
 
-Cell["Enter subsubsection title here", "Subsubsection",ExpressionUUID->"5420134d-7e53-473e-ab72-e33d59e34526"],
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{"Red", ",", 
+    RowBox[{"Disk", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", ".05"}], "]"}], ",", "Blue", ",", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", ".529"}], "]"}], ",", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", 
+      RowBox[{"4", "*", ".529"}]}], "]"}], ",", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", 
+      RowBox[{"9", "*", ".529"}]}], "]"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9853827827696743`*^9, 3.985382787924943*^9}, {
+  3.985382828361469*^9, 3.9853829238494368`*^9}, {3.985382963037942*^9, 
+  3.9853830021141777`*^9}, {3.98538306703957*^9, 3.9853831105342026`*^9}, {
+  3.9853831847441244`*^9, 3.985383216739604*^9}},
+ CellLabel->"In[60]:=",ExpressionUUID->"e9ad1f6e-d3c7-4bb2-86e8-2b1cb1c80d93"],
 
-Cell["\<\
-Enter text here. Enter TraditionalForm input for evaluation in a separate \
-cell below:\
-\>", "Text",ExpressionUUID->"92c50b62-5220-4201-b629-912644273f15"],
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[1, 0, 0], DiskBox[{0, 0}, 0.05]}, 
+   {RGBColor[0, 0, 1], CircleBox[{0, 0}, 0.529], CircleBox[{0, 0}, 2.116], 
+    CircleBox[{0, 0}, 4.761]}}]], "Output",
+ CellChangeTimes->{{3.9853829016435595`*^9, 3.985382924947014*^9}, {
+  3.985382966754081*^9, 3.9853830026113014`*^9}, {3.9853830795811057`*^9, 
+  3.9853831109961653`*^9}, {3.9853832048803706`*^9, 3.9853832170801697`*^9}},
+ CellLabel->"Out[60]=",ExpressionUUID->"efcdb650-0606-442e-9011-a111efa5c082"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"\[Integral]", 
-   RowBox[{"x", 
-    RowBox[{"\[DifferentialD]", "x"}]}]}], "+", 
-  SqrtBox["z"]}]], "Input",ExpressionUUID->"a6d50bc2-326a-431c-806b-\
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "The", " ", "Bohr", " ", "model", " ", "predicts", " ", "that", " ", 
+      "the", " ", "energy", " ", "of", " ", "a", " ", "given", " ", 
+      "electron", " ", "shell", " ", "is", " ", "given", " ", "by", " ", 
+      "E"}], "=", 
+     RowBox[{
+      RowBox[{"-", "13.6"}], "/", 
+      RowBox[{"n", "^", "2"}]}]}], ",", " ", 
+    RowBox[{
+    "where", " ", "n", " ", "is", " ", "the", " ", "number", " ", "of", " ", 
+     "the", " ", "energy", " ", 
+     RowBox[{"level", "."}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "This", " ", "function", " ", "tells", " ", "us", " ", "the", " ", 
+     "energy", " ", "differential", " ", "between", " ", "two", " ", "energy",
+      " ", "levels"}], ",", " ", 
+    RowBox[{"n1", " ", "and", " ", 
+     RowBox[{"n2", ".", " ", "A"}], " ", "positive", " ", "value", " ", 
+     "indicates", " ", "that", " ", "the", " ", "electron", " ", "dropped", 
+     " ", "in", " ", "energy", " ", "from", " ", "a", " ", "high", " ", 
+     "level", " ", "to", " ", "a", " ", "lower", " ", "level"}], ",", " ", 
+    RowBox[{
+    "while", " ", "a", " ", "negative", " ", "value", " ", "indicates", " ", 
+     "that", " ", "the", " ", "electron", " ", "absorbed", " ", "energy", " ",
+      "to", " ", "jump", " ", "up", " ", "from", " ", "a", " ", "low", " ", 
+     "level", " ", "to", " ", "a", " ", "higher", " ", 
+     RowBox[{"level", "."}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"HydrogenBohrEnergy", "[", 
+     RowBox[{"n1_", ",", "n2_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"n", ",", "m"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"n", "=", "n1"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"m", "=", "n2"}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "13.6"}], "/", 
+         RowBox[{"n", "^", "2"}]}], "+", 
+        RowBox[{"13.6", "/", 
+         RowBox[{"m", "^", "2"}]}]}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"HydrogenBohrEnergy", "[", 
+    RowBox[{"1", ",", "2"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.9853799064771705`*^9, 3.985379907143387*^9}, {
+  3.9853804340855646`*^9, 3.9853805898606205`*^9}, {3.985380637464505*^9, 
+  3.9853807658973494`*^9}, {3.985381422215354*^9, 3.9853814281735973`*^9}, {
+  3.985381889028185*^9, 3.9853819256517887`*^9}, {3.985381969032154*^9, 
+  3.985381999548482*^9}},ExpressionUUID->"a6d50bc2-326a-431c-806b-\
 6466135eeb28"],
 
 Cell[BoxData[
- RowBox[{
-  FractionBox[
-   SuperscriptBox["x", "2"], "2"], "+", 
-  SqrtBox["z"]}]], "Output",ExpressionUUID->"1b012441-f9db-429e-926e-\
-4c060f5732a5"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Enter bulleted item text here.", "Item",ExpressionUUID->"5989b392-7bbe-4ff9-8108-8740ea559575"],
-
-Cell["Enter item paragraph text here.", "ItemParagraph",ExpressionUUID->"9fea9b77-1cab-4ac4-b60d-f4a91405c1ba"],
-
-Cell[CellGroupData[{
-
-Cell["Enter subitem text here.", "Subitem",ExpressionUUID->"27aeed7d-ea92-4550-94b6-8d8b9fe8d75d"],
-
-Cell["Enter item paragraph text here.", "SubitemParagraph",ExpressionUUID->"868b9cc1-5fa0-48a0-9db7-c216ee80bde6"],
-
-Cell[CellGroupData[{
-
-Cell["Enter subitem text here.", "Subsubitem",ExpressionUUID->"f92e0b66-c904-4ab2-96bb-f919b9c5ba2c"],
-
-Cell["Enter item paragraph text here.", "SubsubitemParagraph",ExpressionUUID->"a6536ab7-d091-4123-a62d-d4a578cbe8cd"]
-}, Open  ]]
-}, Open  ]]
+ RowBox[{"-", "10.2`"}]], "Output",
+ CellChangeTimes->{{3.9853807557401896`*^9, 3.9853807662923756`*^9}, 
+   3.9853814300713587`*^9},
+ CellLabel->"Out[21]=",ExpressionUUID->"b8c6fc3e-9952-4ca1-9a2d-cb92661bc058"]
 }, Open  ]],
 
 Cell["\<\
-Enter text here. Enter formula for display in a separate cell below:\
-\>", "Text",ExpressionUUID->"e28f41fe-c8b2-43fa-89f1-bda7ad702027"],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   RowBox[{"\[Integral]", 
-    RowBox[{"x", 
-     RowBox[{"\[DifferentialD]", "x"}]}]}], "+", 
-   SqrtBox["z"]}], TraditionalForm]], "DisplayFormula",ExpressionUUID->\
-"f6f982e5-9ac9-4951-932a-19824a20d9c0"],
-
-Cell[TextData[{
- "Enter text here. Enter an inline formula like this: ",
- Cell[BoxData[
-  FormBox[
-   RowBox[{"2", "+", "2"}], TraditionalForm]],ExpressionUUID->
-  "84942bbf-6f60-47e1-be58-31b27eb2ece1"],
- "."
-}], "Text",ExpressionUUID->"ce497758-767d-4d9a-adb9-d91841b63ba3"],
+The Bohr energy turned out to perfectly predict several things, most notably \
+emission and absorption spectra of different elements. When certain elements \
+are passed a lot of energy, they will only emit certain specific wavelengths \
+of light, and when white light passes through a large cloud of a certain \
+element, those same wavelengths of light get absorbed. Classical physics had \
+no good explanation for this, but the Bohr model explained these absorption \
+and emission lines. The wavelength of light may be calculated knowing its \
+energy by the formula E=h*c/\[Lambda], where h and c are the physical \
+constants and \[Lambda] is the wavelength of light.\
+\>", "Text",
+ CellChangeTimes->{{3.9853807939168997`*^9, 3.985380877494607*^9}, {
+  3.985381106684148*^9, 3.985381131089198*^9}, {3.9853811800203905`*^9, 
+  3.9853812522455144`*^9}, {3.9853812978917284`*^9, 3.985381334295385*^9}, {
+  3.9853814115885305`*^9, 3.9853814678400536`*^9}, {3.985381519499286*^9, 
+  3.9853815551231227`*^9}, {3.9853820845797462`*^9, 
+  3.9853820946248884`*^9}},ExpressionUUID->"ec253c67-5d12-4082-884a-\
+20f7c9e2a4e1"],
 
 Cell[CellGroupData[{
-
-Cell["Enter numbered item text here.", "ItemNumbered",ExpressionUUID->"fa15e72b-3e9f-495b-8052-3ea1240d5748"],
-
-Cell["Enter item paragraph text here.", "ItemParagraph",ExpressionUUID->"5e54f3e1-60d4-4df6-9577-8382f7e6c76d"],
-
-Cell[CellGroupData[{
-
-Cell["Enter numbered subitem text here.", "SubitemNumbered",ExpressionUUID->"30c16e94-fafe-4c6d-a63d-9282b9cde142"],
-
-Cell["Enter item paragraph text here.", "SubitemParagraph",ExpressionUUID->"47df05e0-90a3-4b00-b520-70fed5f13ea1"],
-
-Cell[CellGroupData[{
-
-Cell["Enter subitem text here.", "SubsubitemNumbered",ExpressionUUID->"d9e23499-e259-487e-b755-a79c38319b1a"],
-
-Cell["Enter item paragraph text here.", "SubsubitemParagraph",ExpressionUUID->"14a94ab9-6d2f-4da5-9a79-8e6a2f09a0ff"]
-}, Open  ]]
-}, Open  ]]
-}, Open  ]],
-
-Cell["\<\
-Enter text here. Enter formula for numbered display in a separate cell below:\
-\>", "Text",ExpressionUUID->"cc90a53c-2300-4f27-a4cc-b7fcdc1702a3"],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   RowBox[{"\[Integral]", 
-    RowBox[{"x", 
-     RowBox[{"\[DifferentialD]", "x"}]}]}], "+", 
-   SqrtBox["z"]}], TraditionalForm]], "DisplayFormulaNumbered",ExpressionUUID->\
-"aba547ac-aad4-4c14-8731-087366d054ab"],
-
-Cell["Enter text here. Enter Wolfram Language program code below.", "Text",ExpressionUUID->"a64aa0f9-c2f2-4faf-87b0-49d6dfff062b"],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"fun", "[", "x_", "]"}], ":=", "1"}]], "Code",ExpressionUUID->\
-"15be61a2-dacb-4d9a-aa49-7ec215c35bfa"],
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Given", " ", "the", " ", "energy", " ", "of", " ", "a", " ", "photon", 
+     " ", "in", " ", "eV"}], ",", " ", 
+    RowBox[{
+    "this", " ", "function", " ", "returns", " ", "the", " ", "wavelength", 
+     " ", "of", " ", "that", " ", "photon", " ", "in", " ", "nm"}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"PhotonWavelength", "[", "e_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "en", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"en", "=", "e"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Abs", "[", 
+        RowBox[{"4.136", "*", 
+         RowBox[{"10", "^", 
+          RowBox[{"-", "15"}]}], "*", "3", "*", 
+         RowBox[{
+          RowBox[{"10", "^", "8"}], "/", "en"}], "*", 
+         RowBox[{"10", "^", "9"}]}], "]"}]}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"PhotonWavelength", "[", 
+    RowBox[{"HydrogenBohrEnergy", "[", 
+     RowBox[{"2", ",", "3"}], "]"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"PhotonWavelength", "[", 
+    RowBox[{"HydrogenBohrEnergy", "[", 
+     RowBox[{"2", ",", "4"}], "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.985381572793673*^9, 3.9853817995398655`*^9}, {
+  3.9853818331582727`*^9, 3.9853818685433865`*^9}, {3.9853820163758965`*^9, 
+  3.985382063373304*^9}},
+ CellLabel->"In[46]:=",ExpressionUUID->"e1313501-49ba-426b-81b5-7c834352858a"],
+
+Cell[BoxData["656.8941176470589`"], "Output",
+ CellChangeTimes->{{3.985381765184131*^9, 3.9853818004852767`*^9}, {
+  3.985381845780725*^9, 3.9853818690851803`*^9}, {3.9853820233078117`*^9, 
+  3.9853820638239946`*^9}},
+ CellLabel->"Out[47]=",ExpressionUUID->"47e22150-13e8-4662-97cc-85352721d14f"],
+
+Cell[BoxData["486.58823529411774`"], "Output",
+ CellChangeTimes->{{3.985381765184131*^9, 3.9853818004852767`*^9}, {
+  3.985381845780725*^9, 3.9853818690851803`*^9}, {3.9853820233078117`*^9, 
+  3.9853820638272505`*^9}},
+ CellLabel->"Out[48]=",ExpressionUUID->"f20a59ec-23cd-40ed-9963-3ff3a1e6aa52"]
+}, Open  ]],
 
 Cell["\<\
-Enter text here. Enter non-Wolfram Language program code below.\
-\>", "Text",ExpressionUUID->"bb639a1e-e5da-4860-8d2e-10a0bf1182ad"],
-
-Cell["\<\
-DLLEXPORT int fun(WolframLibraryData libData, mreal A1, mreal *Res)
-{
- mreal R0_0;
- mreal R0_1;
- R0_0 = A1;
- R0_1 = R0_0 * R0_0;
- *Res = R0_1;
- funStructCompile->WolframLibraryData_cleanUp(libData, 1);
- return 0;
-}\
-\>", "Program",ExpressionUUID->"c5b1489e-bc85-498f-a988-84cb9d29ea12"]
-}, Open  ]]
+As it turned out, the jumps between energy levels of the Bohr model perfectly \
+corresponded to the energy of the emitted and absorbed photons. The Bohr \
+model correctly predicted quantized electron energy levels, though it was not \
+perfect. The assumption that the electrons orbited at a fixed speed and at a \
+fixed radius was completely false.\
+\>", "Text",
+ CellChangeTimes->{{3.9853821225150785`*^9, 3.98538217245002*^9}, {
+  3.985382208097392*^9, 3.985382333489375*^9}, {3.9853824142690177`*^9, 
+  3.985382414616249*^9}, {3.9853824447292833`*^9, 
+  3.9853824561058073`*^9}},ExpressionUUID->"885571b4-1965-42f0-a737-\
+e8f9d935205b"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -251,50 +344,25 @@ Cell[1373, 43, 170, 3, 17, "Department",ExpressionUUID->"d4d4c7eb-5dec-4d53-add6
 Cell[1546, 48, 153, 3, 43, "Date",ExpressionUUID->"72659a8c-94ab-4a48-a7c3-46939f795b09"],
 Cell[CellGroupData[{
 Cell[1724, 55, 164, 3, 69, "Section",ExpressionUUID->"556dd93a-da25-41e9-b72a-5bff22c034c5"],
-Cell[1891, 60, 1714, 27, 218, "Text",ExpressionUUID->"e3cb5d34-e41b-43e8-adee-abf007e176aa"],
+Cell[1891, 60, 1830, 28, 241, "Text",ExpressionUUID->"e3cb5d34-e41b-43e8-adee-abf007e176aa"],
 Cell[CellGroupData[{
-Cell[3630, 91, 104, 0, 34, "Subsection",ExpressionUUID->"60a1c7b2-9a81-4b81-b2aa-3b90d1c7fb13"],
+Cell[3746, 92, 166, 3, 34, "Subsection",ExpressionUUID->"60a1c7b2-9a81-4b81-b2aa-3b90d1c7fb13"],
+Cell[3915, 97, 1414, 21, 172, "Text",ExpressionUUID->"92c50b62-5220-4201-b629-912644273f15"],
 Cell[CellGroupData[{
-Cell[3759, 95, 110, 0, 33, "Subsubsection",ExpressionUUID->"5420134d-7e53-473e-ab72-e33d59e34526"],
-Cell[3872, 97, 166, 3, 34, "Text",ExpressionUUID->"92c50b62-5220-4201-b629-912644273f15"],
-Cell[CellGroupData[{
-Cell[4063, 104, 200, 6, 54, "Input",ExpressionUUID->"a6d50bc2-326a-431c-806b-6466135eeb28"],
-Cell[4266, 112, 165, 5, 57, "Output",ExpressionUUID->"1b012441-f9db-429e-926e-4c060f5732a5"]
+Cell[5354, 122, 1027, 26, 39, "Input",ExpressionUUID->"e9ad1f6e-d3c7-4bb2-86e8-2b1cb1c80d93"],
+Cell[6384, 150, 497, 8, 383, "Output",ExpressionUUID->"efcdb650-0606-442e-9011-a111efa5c082"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4468, 122, 101, 0, 28, "Item",ExpressionUUID->"5989b392-7bbe-4ff9-8108-8740ea559575"],
-Cell[4572, 124, 111, 0, 25, "ItemParagraph",ExpressionUUID->"9fea9b77-1cab-4ac4-b60d-f4a91405c1ba"],
-Cell[CellGroupData[{
-Cell[4708, 128, 98, 0, 26, "Subitem",ExpressionUUID->"27aeed7d-ea92-4550-94b6-8d8b9fe8d75d"],
-Cell[4809, 130, 114, 0, 23, "SubitemParagraph",ExpressionUUID->"868b9cc1-5fa0-48a0-9db7-c216ee80bde6"],
-Cell[CellGroupData[{
-Cell[4948, 134, 101, 0, 25, "Subsubitem",ExpressionUUID->"f92e0b66-c904-4ab2-96bb-f919b9c5ba2c"],
-Cell[5052, 136, 117, 0, 22, "SubsubitemParagraph",ExpressionUUID->"a6536ab7-d091-4123-a62d-d4a578cbe8cd"]
-}, Open  ]]
-}, Open  ]]
+Cell[6918, 163, 2594, 58, 192, "Input",ExpressionUUID->"a6d50bc2-326a-431c-806b-6466135eeb28"],
+Cell[9515, 223, 226, 4, 39, "Output",ExpressionUUID->"b8c6fc3e-9952-4ca1-9a2d-cb92661bc058"]
 }, Open  ]],
-Cell[5208, 141, 147, 2, 34, "Text",ExpressionUUID->"e28f41fe-c8b2-43fa-89f1-bda7ad702027"],
-Cell[5358, 145, 242, 7, 39, "DisplayFormula",ExpressionUUID->"f6f982e5-9ac9-4951-932a-19824a20d9c0"],
-Cell[5603, 154, 276, 7, 34, "Text",ExpressionUUID->"ce497758-767d-4d9a-adb9-d91841b63ba3"],
+Cell[9756, 230, 1124, 17, 103, "Text",ExpressionUUID->"ec253c67-5d12-4082-884a-20f7c9e2a4e1"],
 Cell[CellGroupData[{
-Cell[5904, 165, 109, 0, 28, "ItemNumbered",ExpressionUUID->"fa15e72b-3e9f-495b-8052-3ea1240d5748"],
-Cell[6016, 167, 111, 0, 70, "ItemParagraph",ExpressionUUID->"5e54f3e1-60d4-4df6-9577-8382f7e6c76d"],
-Cell[CellGroupData[{
-Cell[6152, 171, 115, 0, 70, "SubitemNumbered",ExpressionUUID->"30c16e94-fafe-4c6d-a63d-9282b9cde142"],
-Cell[6270, 173, 114, 0, 70, "SubitemParagraph",ExpressionUUID->"47df05e0-90a3-4b00-b520-70fed5f13ea1"],
-Cell[CellGroupData[{
-Cell[6409, 177, 109, 0, 70, "SubsubitemNumbered",ExpressionUUID->"d9e23499-e259-487e-b755-a79c38319b1a"],
-Cell[6521, 179, 117, 0, 70, "SubsubitemParagraph",ExpressionUUID->"14a94ab9-6d2f-4da5-9a79-8e6a2f09a0ff"]
-}, Open  ]]
-}, Open  ]]
+Cell[10905, 251, 1463, 36, 135, "Input",ExpressionUUID->"e1313501-49ba-426b-81b5-7c834352858a"],
+Cell[12371, 289, 296, 4, 39, "Output",ExpressionUUID->"47e22150-13e8-4662-97cc-85352721d14f"],
+Cell[12670, 295, 297, 4, 39, "Output",ExpressionUUID->"f20a59ec-23cd-40ed-9963-3ff3a1e6aa52"]
 }, Open  ]],
-Cell[6677, 184, 156, 2, 70, "Text",ExpressionUUID->"cc90a53c-2300-4f27-a4cc-b7fcdc1702a3"],
-Cell[6836, 188, 250, 7, 70, "DisplayFormulaNumbered",ExpressionUUID->"aba547ac-aad4-4c14-8731-087366d054ab"],
-Cell[7089, 197, 130, 0, 70, "Text",ExpressionUUID->"a64aa0f9-c2f2-4faf-87b0-49d6dfff062b"],
-Cell[7222, 199, 137, 3, 70, "Code",ExpressionUUID->"15be61a2-dacb-4d9a-aa49-7ec215c35bfa"],
-Cell[7362, 204, 142, 2, 70, "Text",ExpressionUUID->"bb639a1e-e5da-4860-8d2e-10a0bf1182ad"],
-Cell[7507, 208, 296, 11, 70, "Program",ExpressionUUID->"c5b1489e-bc85-498f-a988-84cb9d29ea12"]
-}, Open  ]]
+Cell[12982, 302, 649, 11, 80, "Text",ExpressionUUID->"885571b4-1965-42f0-a737-e8f9d935205b"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
